@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "pet_eco",
+    "slug": "pet_eco",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.peteco.app"
+    },
+    "android": {
+      "package": "com.peteco.app",
+      "versionCode": 1,
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "CAMERA",
+        "WRITE_CALENDAR",
+        "READ_CALENDAR",
+        "USE_FINGERPRINT",
+        "VIBRATE",
+        "com.google.android.gms.permission.ACTIVITY_RECOGNITION"
+      ]
+    }
+  }
+}

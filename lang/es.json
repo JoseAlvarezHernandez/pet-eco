@@ -1,0 +1,30 @@
+{
+    "welcome": "Bienvenido",
+    "login": "Inicio de sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "register": "Registrate",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "awalker": "¿Eres socio paseador?",
+    "footer": "Pet eco © all rights reserved 2019",
+    "registration": {
+        "title": "Creación de tu cuenta",
+        "subtitle": "Por favor llena tus datos personales",
+        "sstitle": "señalados en las casillas",
+        "user": {
+            "fullname": "Nombre completo",
+            "email": "Correo electronico",
+            "password": "contraseña",
+            "dob": "Fecha de nacimiento",
+            "address": "Dirección",
+            "country": "País",
+            "state": "Estado",
+            "city": "Ciudad",
+            "zipcode": "Código Postal"
+        }
+    },
+    "buttons": {
+        "confirm": "Confirmar",
+        "cancel": "Cancelar"
+    }
+}
