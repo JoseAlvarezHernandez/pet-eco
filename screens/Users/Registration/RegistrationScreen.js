@@ -3,7 +3,6 @@ import { ScrollView, Text, TextInput, TouchableOpacity, Picker, View, ActivityIn
 import DatePicker from 'react-native-datepicker';
 
 import Math from '../../../utilities/Math';
-import Resources from '../../../utilities/Resources';
 
 const styles = require('../../../styles/RegistrationScreen');
 
@@ -12,14 +11,15 @@ export default class RegistrationScreen extends React.Component {
     state = {
         ...require('./../../../lang/es.json'),
         countries: null,
+        states: null,
         isLoading: true,
-        dateInput: null
+        dateInput: null,
+        form: {}
     };
 
     constructor(props) {
         super(props);
-
-        this._getAllCountries();
+        this._getAllData();
     }
 
     render() {
@@ -43,20 +43,31 @@ export default class RegistrationScreen extends React.Component {
                             <TextInput
                                 style={styles.input}
                                 placeholder={this.state.registration.user.fullname}
-                                onChangeText={fullnameInput => { this.setState({ fullnameInput }); }}
+                                onChangeText={fullname => {
+                                    form = { ...this.state.form, fullname };
+                                    this.setState({ form });
+                                }}
                             />
 
                             <TextInput
+                                keyboardType="email-address"
+                                autoComplete="email"
                                 style={styles.input}
                                 placeholder={this.state.registration.user.email}
-                                onChangeText={emailInput => { this.setState({ emailInput }); }}
+                                onChangeText={email => {
+                                    form = { ...this.state.form, email };
+                                    this.setState({ form });
+                                }}
                             />
 
                             <TextInput
                                 secureTextEntry={true}
                                 style={styles.input}
                                 placeholder={this.state.registration.user.password}
-                                onChangeText={passwordInput => { this.setState({ passwordInput }); }}
+                                onChangeText={password => {
+                                    form = { ...this.state.form, password };
+                                    this.setState({ form });
+                                }}
                             />
 
                             <DatePicker
@@ -64,8 +75,12 @@ export default class RegistrationScreen extends React.Component {
                                 placeholder={this.state.registration.user.dob}
                                 mode="date"
                                 maxDate={Math.getYearsAgo(18)}
-                                onDateChange={date => this.setState({ dateInput: date })}
-                                date={this.state.dateInput}
+                                onDateChange={dob => {
+                                    form = { ...this.state.form, dob };
+                                    this.setState({ form });
+                                }}
+                                format="DD-MM-YYYY"
+                                date={this.state.form.dob}
                                 customStyles={{
                                     dateInput: {
                                         borderColor: 'gray',
@@ -76,9 +91,7 @@ export default class RegistrationScreen extends React.Component {
                                         width: 270,
                                         height: 50,
                                         marginTop: 10,
-                                        marginBottom: 10,
-                                        textAlign: 'left',
-                                        textAlignment: 'left'
+                                        marginBottom: 10
                                     }
                                 }}
                                 showIcon={false}
@@ -87,30 +100,60 @@ export default class RegistrationScreen extends React.Component {
                             <TextInput
                                 style={styles.input}
                                 placeholder={this.state.registration.user.address}
-                                onChangeText={addressInput => { this.setState({ addressInput }); }}
+                                onChangeText={address => {
+                                    form = { ...this.state.form, address };
+                                    this.setState({ form });
+                                }}
                             />
 
                             <TextInput
                                 style={styles.input}
                                 placeholder={this.state.registration.user.zipcode}
-                                onChangeText={zipCodeInput => { this.setState({ zipCodeInput }); }}
-                                onBlur={this._searchZipCode}
+                                onChangeText={zipcode => {
+                                    form = { ...this.state.form, zipcode };
+                                    this.setState({ form });
+                                }}
                             />
 
                             <Picker
-                                selectedValue={this.state.countryInput}
-                                style={{
-                                    borderWidth: 1,
-                                    borderColor: '#000000'
+                                selectedValue={this.state.form.country}
+                                style={styles.picker}
+                                onValueChange={country => {
+                                    form = { ...this.state.form, country };
+                                    this.setState({ form });
                                 }}
-                                onValueChange={(itemValue, itemIndex) =>
-                                    this.setState({ countryInput: itemValue })
-                                }
                             >
                                 {this.state.countries.map((item, key) => (
-                                    <Picker.Item label={item.name} value={item.numericCode} key={key} />)
+                                    <Picker.Item label={item.name} value={item.code} key={key} />)
                                 )}
                             </Picker>
+
+                            <Picker
+                                selectedValue={this.state.form.state}
+                                style={styles.picker}
+                                onValueChange={state => {
+                                    form = { ...this.state.form, state };
+                                    this.setState({ form });
+                                }}
+                            >
+                                {this.state.states.map((item, key) => (
+                                    <Picker.Item label={item.name} value={item.code} key={key} />)
+                                )}
+                            </Picker>
+
+                            <Picker
+                                selectedValue={this.state.form.city}
+                                style={styles.picker}
+                                onValueChange={city => {
+                                    form = { ...this.state.form, city };
+                                    this.setState({ form });
+                                }}
+                            >
+                                {this.state.cities.map((item, key) => (
+                                    <Picker.Item label={item.name} value={item.code} key={key} />)
+                                )}
+                            </Picker>
+
                             <TouchableOpacity
                                 style={styles.registerButton}
                                 onPress={this._onRegisterPress} >
@@ -123,17 +166,18 @@ export default class RegistrationScreen extends React.Component {
         }
     }
 
-    _getAllCountries = async () => {
-        const resources = new Resources();
-        resources.getCountries().then(countries => {
-            this.setState({ isLoading: false, countries: JSON.parse(countries._bodyInit) })
-        });
-    }
-
-    _searchZipCode = () => {
-
+    _getAllData = () => {
+        setTimeout(() => {
+            this.setState({
+                countries: [{ name: 'País', code: '000' }, { name: 'México', code: '052' }],
+                states: [{ name: 'Estado', code: '000' }, { name: 'Veracruz', code: '352' }],
+                cities: [{ name: 'Ciudad', code: '000' }, { name: 'Boca del rio', code: '355' }],
+                isLoading: false
+            });
+        }, 3000);
     }
     _onRegisterPress = () => {
-
+        console.log(this.state.form);
+        this.props.navigation.navigate('RegistrationPhoneNumberScreen');
     }
 }

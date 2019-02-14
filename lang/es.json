@@ -21,6 +21,14 @@
             "state": "Estado",
             "city": "Ciudad",
             "zipcode": "Código Postal"
+        },
+        "phone": {
+            "send": "Enviar",
+            "title": "Número Telefónico",
+            "subtitle": "Asocia tu número telefónico para poder",
+            "sstitle": "recibir notificaciones y activar todos nuestros servicios.",
+            "phone": "Número Telefónico",
+            "bottom": "Se enviara un SMS para validar tu número"
         }
     },
     "buttons": {

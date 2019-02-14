@@ -1,7 +1,8 @@
 import { createStackNavigator } from 'react-navigation';
 
-import RegistrationScreen from '../screens/Users/Registration/RegistrationScreen';
 import StartScreen from '../screens/StartScreen';
+import RegistrationScreen from '../screens/Users/Registration/RegistrationScreen';
+import RegistrationPhoneNumberScreen from '../screens/Users/Registration/RegistrationPhoneNumberScreen';
 
 
 const AppNavigation = createStackNavigator(
@@ -14,6 +15,9 @@ const AppNavigation = createStackNavigator(
     },
     Registration: {
       screen: RegistrationScreen
+    },
+    RegistrationPhoneNumberScreen: {
+      screen: RegistrationPhoneNumberScreen
     }
   },
   {
