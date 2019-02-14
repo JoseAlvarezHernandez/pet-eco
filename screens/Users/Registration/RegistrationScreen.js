@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, TextInput, TouchableOpacity, Picker, View, ActivityIndicator } from 'react-native';
+import { ScrollView, Text, TextInput, TouchableOpacity, Picker, View, ActivityIndicator, StatusBar } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 import Math from '../../../utilities/Math';
@@ -32,6 +32,7 @@ export default class RegistrationScreen extends React.Component {
         } else {
             return (
                 <View style={styles.container}>
+                    <StatusBar hidden />
                     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
                         <View style={styles.getStartedContainer}>
                             <Text style={styles.title}>{this.state.registration.title}</Text>
@@ -104,7 +105,8 @@ export default class RegistrationScreen extends React.Component {
                                 }}
                                 onValueChange={(itemValue, itemIndex) =>
                                     this.setState({ countryInput: itemValue })
-                                }>
+                                }
+                            >
                                 {this.state.countries.map((item, key) => (
                                     <Picker.Item label={item.name} value={item.numericCode} key={key} />)
                                 )}

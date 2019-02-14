@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Text, TouchableOpacity, View, StatusBar } from 'react-native';
 
 const styles = require('../styles/StartScreen');
 
@@ -10,6 +10,7 @@ export default class StartScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar hidden />
                 <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
                     <View style={styles.welcomeContainer}>
                         <Image
