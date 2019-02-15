@@ -10,12 +10,11 @@ export default class RegistrationPhoneNumberScreen extends React.Component {
         isLoading: false
     };
 
-
     render() {
         if (this.state.isLoading) {
             return (
                 <View style={{ flex: 1, paddingTop: 20 }}>
-                    <ActivityIndicator />
+                    <ActivityIndicator size="large" color="#0000ff" />
                 </View>
             );
         } else {
@@ -49,5 +48,17 @@ export default class RegistrationPhoneNumberScreen extends React.Component {
                 </View >
             );
         }
+    }
+
+    _onRegisterPress = () => {
+        console.log(navigator.geolocation);
+        navigator
+            .geolocation
+            .watchPosition(
+                function success(pos) {
+                    console.log(pos);
+                }, function error(err) {
+                    console.log(err);
+                }, {});
     }
 }

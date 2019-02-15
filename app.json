@@ -24,19 +24,13 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.peteco.app"
+      "bundleIdentifier": "com.inncol.peteco"
     },
     "android": {
-      "package": "com.peteco.app",
+      "package": "com.inncol.peteco",
       "versionCode": 1,
       "permissions": [
-        "ACCESS_FINE_LOCATION",
-        "CAMERA",
-        "WRITE_CALENDAR",
-        "READ_CALENDAR",
-        "USE_FINGERPRINT",
-        "VIBRATE",
-        "com.google.android.gms.permission.ACTIVITY_RECOGNITION"
+        "ACCESS_FINE_LOCATION"
       ]
     }
   }
