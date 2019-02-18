@@ -3,17 +3,21 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import RegisterScreen from '../screens/Users/Registration/Registration';
+import UserHomeScreen from '../screens/Users/UserHomeScreen';
+import UserSettingsScreen from '../screens/Users/Settings/UserSettingsScreen';
+import UserMapScreen from '../screens/Users/Map/UserMapScreen';
+import UserProfileScreen from '../screens/Users/Profile/UserProfileScreen';
+import UsersDogsScreen from '../screens/Users/Dogs/DogsScreen';
+
+const messages = require('./../lang/es.json');
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Home: UserHomeScreen,
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  header: null,
+  tabBarLabel: messages.menu.home,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -26,26 +30,13 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
-};
-
 const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+  Settings: UserSettingsScreen,
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  header: null,
+  tabBarLabel: messages.menu.settings,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -54,21 +45,55 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-const RegisterStack = createStackNavigator({
-  Register: RegisterScreen
+const MapStack = createStackNavigator({
+  userMap: UserMapScreen,
 });
 
-RegisterStack.navigationOptions = {
+MapStack.navigationOptions = {
+  header: null,
+  tabBarLabel: messages.menu.map,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'}
     />
   ),
-}
+};
+
+const ProfileStack = createStackNavigator({
+  userProfile: UserProfileScreen,
+});
+
+ProfileStack.navigationOptions = {
+  header: null,
+  tabBarLabel: messages.menu.profile,
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
+    />
+  ),
+};
+
+const DogStack = createStackNavigator({
+  userDogs: UsersDogsScreen,
+});
+
+DogStack.navigationOptions = {
+  header: null,
+  tabBarLabel: messages.menu.dogs,
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-paw' : 'md-paw'}
+    />
+  ),
+};
+
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
-  RegisterStack
+  DogStack,
+  MapStack,
+  ProfileStack,
+  SettingsStack
 });

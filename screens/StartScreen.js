@@ -41,7 +41,9 @@ export default class StartScreen extends React.Component {
                         </TouchableOpacity >
                     </View>
                     <View style={styles.users}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                        onPress={this._haveAccount}
+                        >
                             <Text style={styles.underline}>{this.state.haveAccount}</Text>
                         </TouchableOpacity>
                     </View>
@@ -53,6 +55,10 @@ export default class StartScreen extends React.Component {
                 </ScrollView>
             </View >
         );
+    }
+
+    _haveAccount = ()=>{
+        this.props.navigation.navigate('Login');
     }
 
     _onRegisterPress = () => {

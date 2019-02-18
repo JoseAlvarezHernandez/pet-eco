@@ -23,13 +23,19 @@ module.exports = StyleSheet.create({
         fontSize: 20,
         justifyContent: 'center'
     },
+    registrationForm: {
+        justifyContent: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
     input: {
         borderColor: 'gray',
         borderWidth: 1,
         borderRadius: 5,
         paddingLeft: 15,
         paddingRight: 15,
-        width: 70,
+        marginRight: 10,
+        width: 50,
         height: 50,
         marginTop: 10,
         marginBottom: 10,

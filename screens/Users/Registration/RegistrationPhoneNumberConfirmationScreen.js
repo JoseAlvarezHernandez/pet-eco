@@ -6,10 +6,17 @@ const styles = require('../../../styles/RegistrationPhoneNumberConfirmationScree
 
 export default class RegistrationPhoneNumberConfirmationScreen extends React.Component {
 
-    state = {
-        ...require('./../../../lang/es.json'),
-        isLoading: false
-    };
+    constructor(props) {
+        super(props);
+        this.focusNextField = this.focusNextField.bind(this);
+        this.inputs = {};
+        this.state = {
+            ...require('./../../../lang/es.json'),
+            isLoading: false,
+            form: {}
+        };
+    }
+
 
     render() {
         if (this.state.isLoading) {
@@ -31,22 +38,40 @@ export default class RegistrationPhoneNumberConfirmationScreen extends React.Com
                             <TextInput
                                 style={styles.input}
                                 keyboardType="numeric"
-                                maxLength={10}
+                                minLength={1}
+                                maxLength={1}
+                                value={this.state.form.first}
+                                onKeyPress={() => this.focusNextField('two')}
+                                ref={input => {
+                                    this.inputs['one'] = input;
+                                }}
                             ></TextInput>
                             <TextInput
                                 style={styles.input}
                                 keyboardType="numeric"
-                                maxLength={10}
+                                minLength={1}
+                                returnKeyType={"next"}
+                                maxLength={1}
+                                value={this.state.form.second}
+                                onKeyPress={() => this.focusNextField('three')}
+                                ref={input => this.inputs['two'] = input}
                             ></TextInput>
                             <TextInput
                                 style={styles.input}
                                 keyboardType="numeric"
-                                maxLength={10}
+                                minLength={1}
+                                maxLength={1}
+                                value={this.state.form.third}
+                                onKeyPress={() => this.focusNextField('four')}
+                                ref={input => this.inputs['three'] = input}
                             ></TextInput>
                             <TextInput
                                 style={styles.input}
                                 keyboardType="numeric"
-                                maxLength={10}
+                                minLength={1}
+                                maxLength={1}
+                                value={this.state.form.fourth}
+                                ref={input => this.inputs['four'] = input}
                             ></TextInput>
                             <TouchableOpacity
                                 style={styles.registerButton}
@@ -63,7 +88,13 @@ export default class RegistrationPhoneNumberConfirmationScreen extends React.Com
         }
     }
 
+    focusNextField(key) {
+        this.inputs[key].focus();
+    }
+
     _onRegisterPress = async () => {
+        this.props.navigation.navigate('UserMenuScreen');
+        /* 
         try {
             let location = await Location.getCurrentPositionAsync({});
             console.log(location);
@@ -72,5 +103,6 @@ export default class RegistrationPhoneNumberConfirmationScreen extends React.Com
             console.log(e);
             return {};
         }
+        /** */
     }
 }

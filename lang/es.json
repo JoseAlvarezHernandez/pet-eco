@@ -1,6 +1,5 @@
 {
     "welcome": "Bienvenido",
-    "login": "Inicio de sesión",
     "username": "Usuario",
     "password": "Contraseña",
     "register": "Registrate",
@@ -30,11 +29,25 @@
             "phone": "Número Telefónico",
             "bottom": "Se enviara un SMS para validar tu número",
             "confirmation": "Confirma tu número",
-            "csubtitle":"Introduce el pin que enviamos por SMS"
+            "csubtitle": "Introduce el pin que enviamos por SMS"
         }
+    },
+    "login": {
+        "title": "Inicia sesión",
+        "subtitle": "solo ingresa tus datos",
+        "username": "Usuario",
+        "password": "Contraseña",
+        "submit": "Ingresar"
     },
     "buttons": {
         "confirm": "Confirmar",
         "cancel": "Cancelar"
+    },
+    "menu": {
+        "home": "Inicio",
+        "map": "Mapa",
+        "settings": "Configuración",
+        "profile": "Perfil",
+        "dogs": "Mis Perros"
     }
 }
