@@ -3,12 +3,7 @@ const React = require('react-native');
 const { StyleSheet } = React;
 
 module.exports = StyleSheet.create({
-    picker: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        width: 270
-    },
-    registerButton: {
+    loginButton: {
         height: 50,
         marginTop: 50,
         marginBottom: 30,
@@ -18,7 +13,7 @@ module.exports = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#68a0cf'
     },
-    registerButtonText: {
+    loginButtonText: {
         textAlign: 'center',
         color: '#ffffff',
         paddingLeft: 80,
@@ -28,7 +23,7 @@ module.exports = StyleSheet.create({
         fontSize: 20,
         justifyContent: 'center'
     },
-    registrationForm: {
+    loginForm: {
         paddingBottom: 20,
         paddingTop: 20
     },

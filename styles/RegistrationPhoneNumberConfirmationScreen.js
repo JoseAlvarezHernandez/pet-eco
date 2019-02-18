@@ -3,14 +3,9 @@ const React = require('react-native');
 const { StyleSheet } = React;
 
 module.exports = StyleSheet.create({
-    picker: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        width: 270
-    },
     registerButton: {
         height: 50,
-        marginTop: 50,
+        marginTop: 20,
         marginBottom: 30,
         justifyContent: 'center',
         backgroundColor: '#68a0cf',
@@ -29,24 +24,9 @@ module.exports = StyleSheet.create({
         justifyContent: 'center'
     },
     registrationForm: {
-        paddingBottom: 20,
-        paddingTop: 20
-    },
-    dateInput: {
-        width: 270,
-        marginTop: 10,
-        marginBottom: 10
-    },
-    picker: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        borderRadius: 5,
-        paddingLeft: 15,
-        paddingRight: 15,
-        width: 270,
-        height: 50,
-        marginTop: 10,
-        marginBottom: 10
+        justifyContent: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap'
     },
     input: {
         borderColor: 'gray',
@@ -54,13 +34,15 @@ module.exports = StyleSheet.create({
         borderRadius: 5,
         paddingLeft: 15,
         paddingRight: 15,
-        width: 270,
+        marginRight: 10,
+        width: 50,
         height: 50,
         marginTop: 10,
         marginBottom: 10,
         textAlign: 'center'
     },
     title: {
+        textAlign: 'center',
         fontSize: 28,
         fontWeight: 'bold',
         paddingBottom: 10,
@@ -69,10 +51,12 @@ module.exports = StyleSheet.create({
     },
     subtitle: {
         textAlign: 'center',
-        color: '#606060'
+        color: '#606060',
+        paddingLeft: 10,
+        paddingRight: 10
     },
     container: {
-        marginTop: 10,
+        marginTop: 50,
         flex: 1,
         backgroundColor: '#fff',
         color: '#fff'
@@ -82,5 +66,5 @@ module.exports = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         textAlignVertical: 'center'
-    }
+    },
 });

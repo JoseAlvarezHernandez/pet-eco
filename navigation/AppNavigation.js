@@ -1,8 +1,11 @@
 import { createStackNavigator } from 'react-navigation';
 
-import RegistrationScreen from '../screens/Users/Registration/RegistrationScreen';
 import StartScreen from '../screens/StartScreen';
-
+import RegistrationScreen from '../screens/Users/Registration/RegistrationScreen';
+import RegistrationPhoneNumberScreen from '../screens/Users/Registration/RegistrationPhoneNumberScreen';
+import RegistrationPhoneNumberConfirmationScreen from '../screens/Users/Registration/RegistrationPhoneNumberConfirmationScreen';
+import UserMenuScreen from '../screens/Users/UserMenuScreen';
+import LoginScreen from '../screens/Login/LoginScreen';
 
 const AppNavigation = createStackNavigator(
   {
@@ -14,6 +17,21 @@ const AppNavigation = createStackNavigator(
     },
     Registration: {
       screen: RegistrationScreen
+    },
+    RegistrationPhoneNumberScreen: {
+      screen: RegistrationPhoneNumberScreen
+    },
+    RegistrationPhoneNumberConfirmationScreen: {
+      screen: RegistrationPhoneNumberConfirmationScreen
+    },
+    UserMenuScreen: {
+      screen: UserMenuScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Login: {
+      screen: LoginScreen
     }
   },
   {
