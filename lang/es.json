@@ -49,5 +49,11 @@
         "settings": "Configuración",
         "profile": "Perfil",
         "dogs": "Mis Perros"
+    },
+    "dogs": {
+        "title": "Mis mascotas"
+    },
+    "map": {
+        "request": "Solicitar"
     }
 }

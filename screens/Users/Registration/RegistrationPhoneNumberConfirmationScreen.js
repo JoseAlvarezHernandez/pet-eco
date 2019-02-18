@@ -94,15 +94,5 @@ export default class RegistrationPhoneNumberConfirmationScreen extends React.Com
 
     _onRegisterPress = async () => {
         this.props.navigation.navigate('UserMenuScreen');
-        /* 
-        try {
-            let location = await Location.getCurrentPositionAsync({});
-            console.log(location);
-            return userLocation || {};
-        } catch (e) {
-            console.log(e);
-            return {};
-        }
-        /** */
     }
 }

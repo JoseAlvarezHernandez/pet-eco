@@ -65,7 +65,6 @@ const ProfileStack = createStackNavigator({
 });
 
 ProfileStack.navigationOptions = {
-  header: null,
   tabBarLabel: messages.menu.profile,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -80,7 +79,6 @@ const DogStack = createStackNavigator({
 });
 
 DogStack.navigationOptions = {
-  header: null,
   tabBarLabel: messages.menu.dogs,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon

@@ -4,15 +4,16 @@ import { TouchableOpacity, StatusBar, ScrollView, Text, TextInput, View } from '
 const styles = require('./../../styles/LoginScreen');
 export default class LoginScreen extends React.Component {
 
+    state = {
+        ...require('../../lang/es.json'),
+        form: {}
+    };
+
+
     constructor(props) {
         super(props);
-        this.state = {
-            ...require('../../lang/es.json'),
-            form: {}
-        };
         this._onLoginPress = this._onLoginPress.bind(this);
     }
-
     render() {
         return (
             <View style={styles.container}>
@@ -40,11 +41,13 @@ export default class LoginScreen extends React.Component {
                                 this.setState({ form });
                             }}
                         />
+
                         <TouchableOpacity
                             style={styles.loginButton}
-                            onPress={this._onloginPress} >
+                            onPress={this._onLoginPress}
+                        >
                             <Text style={styles.loginButtonText}>{this.state.login.submit}</Text>
-                        </TouchableOpacity >
+                        </TouchableOpacity>
                     </View>
                 </ScrollView >
             </View >
