@@ -8,3 +8,6 @@ Pet eco mobile app
 
 > npm install
   
+## Run Locally
+
+> npm start
