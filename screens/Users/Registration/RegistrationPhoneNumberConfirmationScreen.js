@@ -1,9 +1,10 @@
 import React from 'react';
 import { ScrollView, Text, TextInput, TouchableOpacity, View, ActivityIndicator, StatusBar } from 'react-native';
+import { Location } from 'expo';
 
-const styles = require('../../../styles/RegistrationPhoneNumberScreen');
+const styles = require('../../../styles/RegistrationPhoneNumberConfirmationScreen');
 
-export default class RegistrationPhoneNumberScreen extends React.Component {
+export default class RegistrationPhoneNumberConfirmationScreen extends React.Component {
 
     state = {
         ...require('./../../../lang/es.json'),
@@ -23,14 +24,27 @@ export default class RegistrationPhoneNumberScreen extends React.Component {
                     <StatusBar hidden />
                     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
                         <View style={styles.getStartedContainer}>
-                            <Text style={styles.title}>{this.state.registration.phone.title}</Text>
-                            <Text style={styles.subtitle}>{this.state.registration.phone.subtitle}</Text>
-                            <Text style={styles.subtitle}>{this.state.registration.phone.sstitle}</Text>
+                            <Text style={styles.title}>{this.state.registration.phone.confirmation}</Text>
+                            <Text style={styles.subtitle}>{this.state.registration.phone.Csubtitle}</Text>
                         </View>
                         <View style={styles.registrationForm}>
                             <TextInput
                                 style={styles.input}
-                                placeholder={this.state.registration.phone.phone}
+                                keyboardType="numeric"
+                                maxLength={10}
+                            ></TextInput>
+                            <TextInput
+                                style={styles.input}
+                                keyboardType="numeric"
+                                maxLength={10}
+                            ></TextInput>
+                            <TextInput
+                                style={styles.input}
+                                keyboardType="numeric"
+                                maxLength={10}
+                            ></TextInput>
+                            <TextInput
+                                style={styles.input}
                                 keyboardType="numeric"
                                 maxLength={10}
                             ></TextInput>
@@ -49,7 +63,14 @@ export default class RegistrationPhoneNumberScreen extends React.Component {
         }
     }
 
-    _onRegisterPress = () => {
-        this.props.navigation.navigate('RegistrationPhoneNumberConfirmationScreen');
+    _onRegisterPress = async () => {
+        try {
+            let location = await Location.getCurrentPositionAsync({});
+            console.log(location);
+            return userLocation || {};
+        } catch (e) {
+            console.log(e);
+            return {};
+        }
     }
 }

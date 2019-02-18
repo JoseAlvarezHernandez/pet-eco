@@ -1,11 +1,26 @@
 import React from 'react';
 import { Image, ScrollView, Text, TouchableOpacity, View, StatusBar } from 'react-native';
+import { Permissions } from 'expo';
+
 
 const styles = require('../styles/StartScreen');
 
 export default class StartScreen extends React.Component {
 
     state = { ...require('../lang/es.json') };
+
+    constructor(props) {
+        super(props);
+
+        Permissions
+            .askAsync(Permissions.LOCATION, Permissions.CALENDAR, Permissions.CAMERA, Permissions.CAMERA_ROLL, Permissions.NOTIFICATIONS, Permissions.REMINDERS, Permissions.CONTACTS)
+            .then(this.successPermision);
+    }
+
+    successPermision(status) {
+        if(status.status != 'granted')
+            return true;
+    }
 
     render() {
         return (

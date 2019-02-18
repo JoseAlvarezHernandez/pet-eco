@@ -28,7 +28,9 @@
             "subtitle": "Asocia tu número telefónico para poder",
             "sstitle": "recibir notificaciones y activar todos nuestros servicios.",
             "phone": "Número Telefónico",
-            "bottom": "Se enviara un SMS para validar tu número"
+            "bottom": "Se enviara un SMS para validar tu número",
+            "confirmation": "Confirma tu número",
+            "csubtitle":"Introduce el pin que enviamos por SMS"
         }
     },
     "buttons": {
