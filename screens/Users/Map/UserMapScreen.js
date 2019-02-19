@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
+import { Text, View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Location } from 'expo';
 
@@ -10,18 +10,18 @@ export default class UserMapScreen extends React.Component {
         header: null,
     };
 
-    state = {
-        user: {
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-            latitude: null,
-            longitude: null
-        },
-        isLoading: true
-    }
-
     constructor(props) {
         super(props);
+        this.state = {
+            ...require('../../../lang/es.json'),
+            user: {
+                latitudeDelta: 0.03,
+                longitudeDelta: 0.03,
+                latitude: null,
+                longitude: null
+            },
+            isLoading: true
+        };
         this._getLocation();
     }
 

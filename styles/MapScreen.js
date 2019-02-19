@@ -3,10 +3,20 @@ const React = require('react-native');
 const { StyleSheet } = React;
 
 module.exports = StyleSheet.create({
+    markerFixed: {
+        left: '50%',
+        marginLeft: -24,
+        marginTop: -48,
+        position: 'absolute',
+        top: '50%'
+    },
+    marker: {
+        height: 48,
+        width: 48
+    },
     requestButton: {
         height: 50,
-        marginTop: 20,
-        marginBottom: 30,
+        marginBottom: 10,
         justifyContent: 'center',
         backgroundColor: '#68a0cf',
         borderRadius: 15,
