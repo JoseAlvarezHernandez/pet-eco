@@ -4,7 +4,6 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import UserHomeScreen from '../screens/Users/UserHomeScreen';
-import UserSettingsScreen from '../screens/Users/Settings/UserSettingsScreen';
 import UserMapScreen from '../screens/Users/Map/UserMapScreen';
 import UserProfileScreen from '../screens/Users/Profile/UserProfileScreen';
 import UsersDogsScreen from '../screens/Users/Dogs/DogsScreen';
@@ -26,21 +25,6 @@ HomeStack.navigationOptions = {
           ? `ios-information-circle${focused ? '' : '-outline'}`
           : 'md-information-circle'
       }
-    />
-  ),
-};
-
-const SettingsStack = createStackNavigator({
-  Settings: UserSettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  header: null,
-  tabBarLabel: messages.menu.settings,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
     />
   ),
 };
@@ -92,6 +76,5 @@ export default createBottomTabNavigator({
   HomeStack,
   DogStack,
   MapStack,
-  ProfileStack,
-  SettingsStack
+  ProfileStack
 });
