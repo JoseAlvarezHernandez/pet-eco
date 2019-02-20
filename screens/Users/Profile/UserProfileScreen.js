@@ -12,6 +12,7 @@ export default class UserProfileScreen extends React.Component {
     };
 
     state = {
+        ...require('../../../lang/es.json'),
         pushNotifications: true,
         avatar: 'https://www.w3schools.com/w3images/avatar2.png'
     }
@@ -38,19 +39,164 @@ export default class UserProfileScreen extends React.Component {
                         <Text style={styles.userBioText}>alvarez_3993@hotmail.com</Text>
                     </View>
                 </View>
-                <InfoText text="Cuenta" />
+                <InfoText text={this.state.config.account} />
+                <ListItem
+                    title={this.state.config.notification}
+                    switch={
+                        {
+                            onValueChange: this.onChangePushNotifications,
+                            value: this.state.pushNotifications
+                        }
+                    }
+                    containerStyle={styles.listItemContainer}
+                    bottomDivider
+                    leftIcon={
+                        <Icon.Ionicons
+                            style={{
+                                backgroundColor: '#2aa9c5',
+                                width: 30,
+                                height: 30,
+                                borderRadius: 15,
+                                paddingTop: 3,
+                                textAlign: 'center',
+                                alignItems: 'center',
+
+                            }}
+                            color="white"
+                            size={24}
+                            name="md-notifications" />
+                    }
+                />
+                <ListItem
+                    title={this.state.config.currency}
+                    rightTitle="USD"
+                    rightTitleStyle={styles.rightTitle}
+                    bottomDivider
+                    onPress={() => this.onPressOptions()}
+                    leftIcon={
+                        <Icon.Ionicons
+                            style={{
+                                backgroundColor: '#007c35',
+                                width: 30,
+                                height: 30,
+                                borderRadius: 15,
+                                paddingTop: 3,
+                                textAlign: 'center',
+                                alignItems: 'center',
+
+                            }}
+                            color="white"
+                            size={24}
+                            name="md-cash" />
+                    }
+                    rightIcon={
+                        <Icon.Ionicons
+                            color="rgba(211, 211, 211, 0.6)"
+                            size={24}
+                            name="md-arrow-dropright" />
+                    }
+                />
+                <ListItem
+                    title={this.state.config.card}
+                    rightTitle="**123"
+                    rightTitleStyle={styles.rightTitle}
+                    bottomDivider
+                    onPress={() => this.onPressOptions()}
+                    leftIcon={
+                        <Icon.Ionicons
+                            style={{
+                                backgroundColor: 'purple',
+                                width: 30,
+                                height: 30,
+                                borderRadius: 15,
+                                paddingTop: 3,
+                                textAlign: 'center',
+                                alignItems: 'center',
+
+                            }}
+                            color="white"
+                            size={24}
+                            name="md-card" />
+                    }
+                    rightIcon={
+                        <Icon.Ionicons
+                            color="rgba(211, 211, 211, 0.6)"
+                            size={24}
+                            name="md-arrow-dropright" />
+                    }
+                />
+                <ListItem
+                    title={this.state.config.lang}
+                    rightTitle="ES"
+                    rightTitleStyle={styles.rightTitle}
+                    onPress={() => this.onPressOptions()}
+                    leftIcon={
+                        <Icon.Ionicons
+                            style={{
+                                backgroundColor: 'pink',
+                                width: 30,
+                                height: 30,
+                                borderRadius: 15,
+                                paddingTop: 3,
+                                textAlign: 'center',
+                                alignItems: 'center',
+
+                            }}
+                            color="white"
+                            size={24}
+                            name="md-globe" />
+                    }
+                    rightIcon={
+                        <Icon.Ionicons
+                            color="rgba(211, 211, 211, 0.6)"
+                            size={24}
+                            name="md-arrow-dropright" />
+                    }
+                />
+                <InfoText text={this.state.config.more} />
+                <ListItem
+                    title={this.state.config.about}
+                    bottomDivider
+                    onPress={() => this.onPressOptions()}
+                    leftIcon={
+                        <Icon.Ionicons
+                            color="gray"
+                            size={34}
+                            name="md-information-circle" />
+                    }
+                />
+                <ListItem
+                    title={this.state.config.logout}
+                    bottomDivider
+                    onPress={() => this.onPressOptions()}
+                    leftIcon={
+                        <Icon.Ionicons
+                            style={{
+                                backgroundColor: '#f06868',
+                                width: 30,
+                                height: 30,
+                                borderRadius: 15,
+                                paddingTop: 3,
+                                textAlign: 'center',
+                                alignItems: 'center',
+
+                            }}
+                            size={24}
+                            name="md-log-out"
+                            color='white'
+                        />
+                    }
+                />
             </ScrollView>
         );
     }
 
     onPressOptions = () => {
-        this.props.navigation.navigate('options')
+        console.log('Options');
     }
 
     onChangePushNotifications = () => {
-        this.setState(state => ({
-            pushNotifications: !state.pushNotifications,
-        }))
+        this.setState({ pushNotifications: !this.state.pushNotifications })
     }
 
     onChangeAvatar = async () => {

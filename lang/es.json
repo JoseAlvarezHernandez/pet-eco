@@ -55,5 +55,15 @@
     },
     "map": {
         "request": "Solicitar"
+    },
+    "config": {
+        "card": "Tarjeta",
+        "account": "Cuenta",
+        "more": "Más",
+        "about": "Acerca de",
+        "lang": "Idioma",
+        "currency": "Moneda",
+        "notification": "Notificaciones",
+        "logout": "Salir"
     }
 }
