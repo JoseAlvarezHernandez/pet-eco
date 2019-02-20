@@ -3,57 +3,53 @@ const React = require('react-native');
 const { StyleSheet } = React;
 
 module.exports = StyleSheet.create({
-    scrollContainer: {
-        flex: 1,
-    },
-    profile: {
-        paddingTop: 10,
-        backgroundColor: '#FDD7E4',
-        alignSelf: 'stretch',
-        alignItems: 'flex-start',
-        flexDirection: 'row',
-        height: 150
-    },
-    image: {
-        marginLeft: 15,
-        borderRadius: 60,
-        width: 100,
-        height: 100,
-        borderWidth: 2,
-        borderColor: '#68a0cf'
-    },
-    title: {
-        alignSelf: 'stretch',
-        backgroundColor: '#192f6a',
-        paddingTop: 15,
-        paddingBottom: 15
-    },
-    titleText: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: '#ffffff'
-    },
-    data: {
-
+    name: {
+        fontSize: 16
     },
     email: {
-        paddingLeft: 5,
-        color: '#c2c2c2',
-        fontSize: 14
+        color: 'gray',
+        fontSize: 16,
     },
-    name: {
-        paddingLeft: 5,
-        paddingTop: 30,
-        color: '#ffffff',
-        fontSize: 20
+    scroll: {
+        backgroundColor: 'white',
     },
-    phone: {
-        alignItems: 'flex-start',
-        flexDirection: 'row',
-        backgroundColor: '#ffffff'
+    userRow: {
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        marginBottom: 12,
     },
-    phoneNumber: {
-        fontSize: 30,
-        color: '#2c2c2c'
+    userNameText: {
+        color: '#5B5A5A',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    userBioRow: {
+        marginLeft: 40,
+        marginRight: 40,
+    },
+    userNameText: {
+        color: '#5B5A5A',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    userBioText: {
+        color: 'gray',
+        fontSize: 13.5,
+        textAlign: 'center',
+    },
+    userImage: {
+        marginTop: 15,
+        marginBottom: 10
+    },
+    listContainer: {
+        marginBottom: 0,
+        marginTop: 0,
+        borderTopWidth: 0,
+    },
+    listItemContainer: {
+        borderBottomColor: '#ECECEC',
     }
 });

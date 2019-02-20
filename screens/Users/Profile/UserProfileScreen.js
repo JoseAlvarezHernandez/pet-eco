@@ -1,42 +1,65 @@
 import React from 'react';
 import { Text, View, ScrollView, Image, Platform } from 'react-native';
-import { LinearGradient, Icon } from 'expo';
-const styles = require('../../../styles/UserProfileScreen');
+import { Icon, ImagePicker } from 'expo';
+import { Avatar, List, ListItem } from 'react-native-elements';
+import InfoText from './../../../components/InfoText';
+
+const styles = require('./../../../styles/UserProfileScreen');
 
 export default class UserProfileScreen extends React.Component {
     static navigationOptions = {
         header: null,
     };
 
+    state = {
+        pushNotifications: true,
+        avatar: 'https://www.w3schools.com/w3images/avatar2.png'
+    }
+
     render() {
         return (
-            <ScrollView style={styles.scrollContainer}>
-                <LinearGradient
-                    colors={['#4c669f', '#3b5998', '#192f6a']}
-                    style={styles.profile}>
-                    <Image
-                        style={styles.image}
-                        source={{ uri: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg' }}>
-                    </Image>
-                    <View style={styles.data}>
-                        <Text style={styles.name}>Jose de Jesus Alvarez</Text>
-                        <Text style={styles.email}>alvarez_3993@hotmail.com</Text>
-                    </View>
-                </LinearGradient>
-                <View style={styles.scrollContainer}>
-                    <View style={styles.title}>
-                        <Text style={styles.titleText}>Cuenta</Text>
-                    </View>
-                    <View style={styles.item}>
-                        <Icon.Ionicons
-                            name={Platform.OS === 'ios' ? 'ios-call' : 'md-call'}
-                            size={30}
-                            color='green'
+            <ScrollView style={styles.scroll}>
+                <View style={styles.userRow}>
+                    <View style={styles.userImage}>
+                        <Avatar
+                            size="xlarge"
+                            rounded
+                            showEditButton
+                            onEditPress={this.onChangeAvatar}
+                            source={{
+                                uri: this.state.avatar,
+                            }}
                         />
-                        <Text style={styles.phoneNumber}>+52 (55) - 269 - 91207</Text>
+                    </View>
+                    <View style={styles.userNameRow}>
+                        <Text style={styles.userNameText}>Jose Alvarez</Text>
+                    </View>
+                    <View style={styles.userBioRow}>
+                        <Text style={styles.userBioText}>alvarez_3993@hotmail.com</Text>
                     </View>
                 </View>
+                <InfoText text="Cuenta" />
             </ScrollView>
         );
     }
-}
+
+    onPressOptions = () => {
+        this.props.navigation.navigate('options')
+    }
+
+    onChangePushNotifications = () => {
+        this.setState(state => ({
+            pushNotifications: !state.pushNotifications,
+        }))
+    }
+
+    onChangeAvatar = async () => {
+        const result = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: true,
+            aspect: [4, 4],
+        });
+        if (!result.cancelled) {
+            this.setState({ avatar: result.uri });
+        }
+    };
+} 
