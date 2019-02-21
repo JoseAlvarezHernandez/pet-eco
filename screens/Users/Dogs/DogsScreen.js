@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, ScrollView, View, Image } from 'react-native';
+import { Text, ScrollView, View, Image, TouchableOpacity } from 'react-native';
+import { Icon } from 'expo';
 
 const styles = require('./../../../styles/DogsScreen');
 
@@ -26,18 +27,30 @@ export default class UserDogsScreen extends React.Component {
 
     render() {
         return (
-            <ScrollView style={styles.scrollContainer}>
-                <View style={styles.container}>
-                    {
-                        this.state.myDogs.map((dog, key) => (
-                            <View style={styles.card} key={key}>
-                                <Image style={styles.dogsProfile} source={{ uri: dog.image }} ></Image>
-                                <Text style={styles.name}>{dog.name}</Text>
-                            </View>
-                        ))
-                    }
-                </View >
-            </ScrollView >
+            <View style={styles.scrollContainer}>
+                <TouchableOpacity
+                    style={styles.registerButton}
+                    onPress={this._onRegisterPress} >
+                    <Icon.Ionicons
+                        style={styles.icon}
+                        name="md-add"
+                        size={40}
+                        color="#ffffff"
+                    />
+                </TouchableOpacity >
+                <ScrollView style={styles.scrollContainer}>
+                    <View style={styles.container}>
+                        {
+                            this.state.myDogs.map((dog, key) => (
+                                <View style={styles.card} key={key}>
+                                    <Image style={styles.dogsProfile} source={{ uri: dog.image }} ></Image>
+                                    <Text style={styles.name}>{dog.name}</Text>
+                                </View>
+                            ))
+                        }
+                    </View >
+                </ScrollView>
+            </View >
         );
     }
 }
