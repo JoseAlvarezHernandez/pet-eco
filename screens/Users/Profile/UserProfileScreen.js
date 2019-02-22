@@ -16,15 +16,13 @@ export default class UserProfileScreen extends React.Component {
     state = {
         ...require('../../../lang/es.json'),
         pushNotifications: true,
-        isVisible: false,
+        isCurrencyVisible: false,
+        isLanguagesVisible: false,
         avatar: 'https://www.w3schools.com/w3images/avatar2.png',
-        currencies: [
-            { label: 'USD', currency: '001' },
-            { label: 'MXN', currency: '002' },
-            { label: 'EUR', currency: '003' },
-            { label: 'CAD', currency: '004' },
-        ],
-        currency: 'MXN'
+        currencies: require('../../../assets/jsons/Currencies.json'),
+        languages: require('../../../assets/jsons/Languages.json'),
+        currency: 'MXN',
+        language: 'Es'
     }
 
     render() {
@@ -32,10 +30,17 @@ export default class UserProfileScreen extends React.Component {
             <ScrollView style={styles.scroll}>
                 <PickerModal
                     items={this.state.currencies}
-                    isVisible={this.state.isVisible}
-                    onItemSelected={this.callBack}
-                    key="currency"
-                    label="label" />
+                    isVisible={this.state.isCurrencyVisible}
+                    onItemSelected={(key, currency) => this.setState({ isCurrencyVisible: false, currency })}
+                    icon="md-cash"
+                    onBackdropPress={() => this.setState({ isCurrencyVisible: false })} />
+
+                <PickerModal
+                    items={this.state.languages}
+                    isVisible={this.state.isLanguagesVisible}
+                    onItemSelected={(language, label) => this.setState({ isLanguagesVisible: false, language })}
+                    icon="md-cash"
+                    onBackdropPress={() => this.setState({ isLanguagesVisible: false })} />
 
                 <View style={styles.userRow}>
                     <View style={styles.userImage}>
@@ -87,7 +92,7 @@ export default class UserProfileScreen extends React.Component {
                 <ListItem
                     title={this.state.config.currency}
                     bottomDivider
-                    onPress={() => this.onPressOptions()}
+                    onPress={() => this.setState({ isCurrencyVisible: true })}
                     rightTitle={this.state.currency}
                     rightTitleStyle={styles.rightTitle}
                     leftIcon={
@@ -145,9 +150,9 @@ export default class UserProfileScreen extends React.Component {
                 />
                 <ListItem
                     title={this.state.config.lang}
-                    rightTitle="ES"
+                    rightTitle={this.state.language}
                     rightTitleStyle={styles.rightTitle}
-                    onPress={() => this.onPressOptions()}
+                    onPress={() => this.setState({ isLanguagesVisible: true })}
                     leftIcon={
                         <Icon.Ionicons
                             style={{
@@ -209,10 +214,6 @@ export default class UserProfileScreen extends React.Component {
         );
     }
 
-    onPressOptions = () => {
-        this.setState({ isVisible: true });
-    }
-
     onChangePushNotifications = () => {
         this.setState({ pushNotifications: !this.state.pushNotifications })
     }
@@ -226,13 +227,4 @@ export default class UserProfileScreen extends React.Component {
             this.setState({ avatar: result.uri });
         }
     };
-
-    closeModal = () => {
-        this.setState({ isVisible: false });
-    }
-
-    callBack = (key, label) => {
-        this.setState({ isVisible: false, currency: label });
-        console.log(`seleccione ${key}`);
-    }
 } 

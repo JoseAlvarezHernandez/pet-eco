@@ -1,0 +1,30 @@
+[
+    {
+        "label": "USD",
+        "key": "001"
+    },
+    {
+        "label": "MXN",
+        "key": "002"
+    },
+    {
+        "label": "EUR",
+        "key": "003"
+    },
+    {
+        "label": "CAD",
+        "key": "004"
+    },
+    {
+        "label": "CNY",
+        "key": "005"
+    },
+    {
+        "label": "JPY",
+        "key": "006"
+    },
+    {
+        "label": "BRL",
+        "key": "007"
+    }
+]
