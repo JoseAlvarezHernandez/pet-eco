@@ -1,178 +1,67 @@
 import React from 'react';
-import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
-import { WebBrowser } from 'expo';
-import { MonoText } from '../../components/StyledText';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import { Card, ListItem } from 'react-native-elements';
 
+const styles = require('./../../styles/HomeScreen');
+const lang = require('./../../lang/es.json');
 export default class UserHomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: lang.home.title,
+    headerStyle: { backgroundColor: '#285caf' },
+    headerTitleStyle: { fontSize: 30, flex: 1, color: '#ffffff', textAlign: 'center', alignItems: 'center', alignSelf: 'center' },
   };
+
+  state = {
+    ...lang,
+    newsFeed: [
+      {
+        title: 'Saca el paraguas',
+        subtitle: 'Se pronostica un día parcialmente nublado con un minimo de 5 grados y rafagas de viento a 14 Km/h',
+        date: '20/02/2019 21:59',
+        avatar: 'https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/nX1tYZQ/timelapse-of-a-cloudy-sky-just-before-a-storm-video-about-nature-cloud-storm-water-weather-rain-climate-change-paradise-heaven_reupeghzg_thumbnail-full01.png'
+      }, {
+        avatar: 'https://www.soe.uagrm.edu.bo/wp-content/uploads/2017/03/default-avatar-ginger-guy.png',
+        title: 'Antonio Nuñes',
+        subtitle: 'Nuevo paseador en Pet Eco',
+        date: '20/02/2019 20:59',
+      }, {
+        title: 'Excelente clima para pasear',
+        subtitle: 'Se pronostica un día despejado con un minimo de 24 grados',
+        avatar: 'https://previews.123rf.com/images/djvstock/djvstock1709/djvstock170906533/85720624-sunny-day-and-thermometer-of-weather-and-climate-theme-vector-illustration.jpg',
+        date: '20/02/2019 13:59',
+      }, {
+        avatar: 'https://st2.depositphotos.com/1007566/12304/v/950/depositphotos_123041468-stock-illustration-avatar-man-cartoon.jpg',
+        title: 'Juan Perez',
+        subtitle: 'Ha recibido 12k calificaciones de 5 estrellas!',
+        date: '19/02/2019 07:59',
+      }, {
+        avatar: 'https://animalesdomesticos.co/wp-content/uploads/2018/11/Nombre-para-perros.jpg',
+        title: 'Cuida a tu mejor amigo ',
+        subtitle: 'EL día de hoy en México se ha aprobado la ley que protege a nuestros amigo y nos permite saber donde estan todo el tiempo',
+        date: '19/02/2019 07:59',
+      },
+    ]
+  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../../assets/images/robot-dev.png')
-                  : require('../../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              automaticamente
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
-      </View>
+      <ScrollView stylle={styles.container}>
+        {
+          this.state.newsFeed.map(
+            (feed, key) => {
+              return <Card
+                key={key.toString()}
+                title={feed.title}
+                image={{ uri: feed.avatar }}>
+                <Text style={{ marginBottom: 10, textAlign: 'justify' }}>
+                  {feed.subtitle}
+                </Text>
+              </Card>
+            }
+          )
+        }
+      </ScrollView>
     );
   }
 
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Un texto. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
-});

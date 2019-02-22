@@ -14,7 +14,6 @@ module.exports = StyleSheet.create({
         width: 60,
         height: 60,
         flex: 1,
-        justiftyContent: "center",
         alignItems: "center",
         backgroundColor: '#68a0cf',
         borderRadius: 30,

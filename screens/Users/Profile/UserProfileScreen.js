@@ -1,8 +1,10 @@
 import React from 'react';
-import { Text, View, ScrollView, Image, Platform } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import { Icon, ImagePicker } from 'expo';
-import { Avatar, List, ListItem } from 'react-native-elements';
+import { Avatar, ListItem } from 'react-native-elements';
+
 import InfoText from './../../../components/InfoText';
+import PickerModal from '../../../components/PickerModal';
 
 const styles = require('./../../../styles/UserProfileScreen');
 
@@ -14,12 +16,27 @@ export default class UserProfileScreen extends React.Component {
     state = {
         ...require('../../../lang/es.json'),
         pushNotifications: true,
-        avatar: 'https://www.w3schools.com/w3images/avatar2.png'
+        isVisible: false,
+        avatar: 'https://www.w3schools.com/w3images/avatar2.png',
+        currencies: [
+            { label: 'USD', currency: '001' },
+            { label: 'MXN', currency: '002' },
+            { label: 'EUR', currency: '003' },
+            { label: 'CAD', currency: '004' },
+        ],
+        currency: 'MXN'
     }
 
     render() {
         return (
             <ScrollView style={styles.scroll}>
+                <PickerModal
+                    items={this.state.currencies}
+                    isVisible={this.state.isVisible}
+                    onItemSelected={this.callBack}
+                    key="currency"
+                    label="label" />
+
                 <View style={styles.userRow}>
                     <View style={styles.userImage}>
                         <Avatar
@@ -69,10 +86,10 @@ export default class UserProfileScreen extends React.Component {
                 />
                 <ListItem
                     title={this.state.config.currency}
-                    rightTitle="USD"
-                    rightTitleStyle={styles.rightTitle}
                     bottomDivider
                     onPress={() => this.onPressOptions()}
+                    rightTitle={this.state.currency}
+                    rightTitleStyle={styles.rightTitle}
                     leftIcon={
                         <Icon.Ionicons
                             style={{
@@ -96,6 +113,7 @@ export default class UserProfileScreen extends React.Component {
                             name="md-arrow-dropright" />
                     }
                 />
+
                 <ListItem
                     title={this.state.config.card}
                     rightTitle="**123"
@@ -187,12 +205,12 @@ export default class UserProfileScreen extends React.Component {
                         />
                     }
                 />
-            </ScrollView>
+            </ScrollView >
         );
     }
 
     onPressOptions = () => {
-        console.log('Options');
+        this.setState({ isVisible: true });
     }
 
     onChangePushNotifications = () => {
@@ -208,4 +226,13 @@ export default class UserProfileScreen extends React.Component {
             this.setState({ avatar: result.uri });
         }
     };
+
+    closeModal = () => {
+        this.setState({ isVisible: false });
+    }
+
+    callBack = (key, label) => {
+        this.setState({ isVisible: false, currency: label });
+        console.log(`seleccione ${key}`);
+    }
 } 

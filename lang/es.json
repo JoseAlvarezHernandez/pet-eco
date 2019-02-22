@@ -65,5 +65,9 @@
         "currency": "Moneda",
         "notification": "Notificaciones",
         "logout": "Salir"
-    }
+    },
+    "home": {
+        "title": "Noticias nuevas"
+    },
+    "pick": "Seleccione"
 }

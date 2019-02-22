@@ -3,14 +3,17 @@ import { Text, ScrollView, View, Image, TouchableOpacity } from 'react-native';
 import { Icon } from 'expo';
 
 const styles = require('./../../../styles/DogsScreen');
+const lang = require('../../../lang/es.json');
 
 export default class UserDogsScreen extends React.Component {
     static navigationOptions = {
-        title: 'Mis Mascotas'
+        title: lang.dogs.title,
+        headerStyle: { backgroundColor: '#285caf' },
+        headerTitleStyle: { fontSize: 30, flex: 1, color: '#ffffff', textAlign: 'center', alignItems: 'center', alignSelf: 'center' },
     };
 
     state = {
-        ...require('../../../lang/es.json'),
+        ...lang,
         myDogs: [
             {
                 image: 'https://www.ecured.cu/images/thumb/a/a4/Perros1.jpg/260px-Perros1.jpg',
