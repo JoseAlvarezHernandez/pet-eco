@@ -213,6 +213,9 @@ export default class UserProfileScreen extends React.Component {
             </ScrollView >
         );
     }
+    onPressOptions = () => {
+        console.log('Press');
+    }
 
     onChangePushNotifications = () => {
         this.setState({ pushNotifications: !this.state.pushNotifications })
