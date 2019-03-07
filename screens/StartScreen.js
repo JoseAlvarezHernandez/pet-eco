@@ -14,11 +14,12 @@ export default class StartScreen extends React.Component {
 
         Permissions
             .askAsync(Permissions.LOCATION, Permissions.CALENDAR, Permissions.CAMERA, Permissions.CAMERA_ROLL, Permissions.NOTIFICATIONS, Permissions.REMINDERS, Permissions.CONTACTS)
-            .then(this.successPermision);
+            .then(this.successPermision)
+            .catch(err => console.log(err));
     }
 
     successPermision(status) {
-        if(status.status != 'granted')
+        if (status.status != 'granted')
             return true;
     }
 
@@ -41,14 +42,12 @@ export default class StartScreen extends React.Component {
                         </TouchableOpacity >
                     </View>
                     <View style={styles.users}>
-                        <TouchableOpacity
-                        onPress={this._haveAccount}
-                        >
+                        <TouchableOpacity onPress={this._haveAccount}>
                             <Text style={styles.underline}>{this.state.haveAccount}</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.walkers}>
-                        <TouchableOpacity onPress={this._onLoginPress} >
+                        <TouchableOpacity onPress={this._aNewWalker} >
                             <Text style={styles.underline}>{this.state.awalker}</Text>
                         </TouchableOpacity>
                     </View>
@@ -57,7 +56,7 @@ export default class StartScreen extends React.Component {
         );
     }
 
-    _haveAccount = ()=>{
+    _haveAccount = () => {
         this.props.navigation.navigate('Login');
     }
 
@@ -65,7 +64,7 @@ export default class StartScreen extends React.Component {
         this.props.navigation.navigate('Registration');
     }
 
-    _onLoginPress = state => {
-        this.setState({ message: 'Pressed' });
+    _aNewWalker = state => {
+        this.props.navigation.navigate('WalkerRegistration');
     }
 }

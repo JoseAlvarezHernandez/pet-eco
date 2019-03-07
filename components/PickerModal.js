@@ -35,10 +35,7 @@ export default class PickerModal extends React.Component {
                                     name={this.props.icon} />}
                             key={item.key}
                             title={item.label}
-                            onPress={() => {
-                                this.setState({ isVisible: false });
-                                this.props.onItemSelected(item.key, item.label);
-                            }} />
+                            onPress={() => this.props.onItemSelected(item.key, item.label)} />
                     }
                 />
             </ScrollView>

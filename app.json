@@ -30,9 +30,12 @@
       "package": "com.inncol.peteco",
       "versionCode": 1,
       "permissions": [
+        "VIBRATE",
         "ACCESS_FINE_LOCATION",
         "CAMERA"
       ]
-    }
+    },
+    "description": "Pet Eco android App",
+    "githubUrl": "https://github.com/JoseAlvarezHernandez/pet-eco.git"
   }
 }

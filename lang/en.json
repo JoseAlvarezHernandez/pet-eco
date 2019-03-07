@@ -1,0 +1,73 @@
+{
+    "welcome": "Welcome",
+    "username": "User name",
+    "password": "Password",
+    "register": "Sign up",
+    "haveAccount": "Have an account?",
+    "awalker": "Are you a walking partner?",
+    "footer": "Pet eco © all rights reserved 2019",
+    "registration": {
+        "title": "Creating your account",
+        "subtitle": "Please fill in your personal information",
+        "sstitle": "indicated in the inputs",
+        "user": {
+            "fullname": "Full name",
+            "email": "Email address",
+            "password": "Password",
+            "dob": "Date of birth",
+            "address": "Address",
+            "country": "Contry",
+            "state": "State",
+            "city": "City",
+            "zipcode": "Zip code"
+        },
+        "phone": {
+            "send": "Send",
+            "title": "Phone number",
+            "subtitle": "Associate your phone number to be able",
+            "sstitle": "to receive notifications and activate all our services.",
+            "phone": "Phone number",
+            "bottom": "An SMS will be sent to validate your number",
+            "confirmation": "Confirm your number",
+            "csubtitle": "Enter the pin we send by SMS"
+        }
+    },
+    "login": {
+        "title": "Log in",
+        "subtitle": "Just enter your data",
+        "username": "User name",
+        "password": "Password",
+        "submit": "Log in"
+    },
+    "buttons": {
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+    },
+    "menu": {
+        "home": "Home",
+        "map": "Map",
+        "settings": "Configuration",
+        "profile": "Profile",
+        "dogs": "My pets"
+    },
+    "dogs": {
+        "title": "My pets"
+    },
+    "map": {
+        "request": "Request"
+    },
+    "config": {
+        "card": "Card",
+        "account": "Account",
+        "more": "More",
+        "about": "About us",
+        "lang": "Language",
+        "currency": "Currency",
+        "notification": "Notifications",
+        "logout": "Log out"
+    },
+    "home": {
+        "title": "News"
+    },
+    "pick": "Choose"
+}

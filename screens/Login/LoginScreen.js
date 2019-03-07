@@ -14,6 +14,7 @@ export default class LoginScreen extends React.Component {
         super(props);
         this._onLoginPress = this._onLoginPress.bind(this);
     }
+
     render() {
         return (
             <View style={styles.container}>

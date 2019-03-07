@@ -6,9 +6,13 @@ import RegistrationPhoneNumberScreen from '../screens/Users/Registration/Registr
 import RegistrationPhoneNumberConfirmationScreen from '../screens/Users/Registration/RegistrationPhoneNumberConfirmationScreen';
 import UserMenuScreen from '../screens/Users/UserMenuScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
+import WalkerRegistrationScreen from '../screens/Walker/Registration/RegistrationScreen';
 
 const AppNavigation = createStackNavigator(
   {
+    WalkerRegistration: {
+      screen: WalkerRegistrationScreen
+    },
     Start: {
       screen: StartScreen,
       navigationOptions: {
